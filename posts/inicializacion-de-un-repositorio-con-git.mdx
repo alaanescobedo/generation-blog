@@ -1,0 +1,49 @@
+---
+title: Inicializacion de un repositorio con git
+tags:
+  - Git
+date: 2022-09-24 21:00:00
+excerpt: El comando git init crea un nuevo repositorio de Git. Puede utilizarse para convertir un proyecto existente y sin versión en un repositorio de Git, o para inicializar un nuevo repositorio vacío. 
+---
+
+El comando git init crea un nuevo repositorio de Git. Puede utilizarse para convertir un proyecto existente y sin versión en un repositorio de Git, o para inicializar un nuevo repositorio vacío.
+
+Este suele ser el primer comando que se ejecuta en un proyecto nuevo.
+
+### Ejercicio:
+
+#### Preparativos:
+- 1 - Desde la linea de comandos nos colocarmos en el directorio donde queremos trabajar.
+![image](https://res.cloudinary.com/dr3egho5s/image/upload/v1664071612/Generation%2018%20-%20Blog/Git/root_l3fafk.jpg)
+- 2 - Creamos una nueva carpeta para esta practica y entramos en ella.
+```bash
+mkdir nombre-de-tu-proyecto
+cd nombre-de-tu-proyecto
+```
+
+#### Ejecucion:
+- **NOTA:** Antes de continuar es buena idea asegurarnos que **NO** estemos dentro de un proyecto que ya tenga git inicializado, ya que esto podria causar problemas. Lo confirmamos con el siguiente comando:
+```bash
+git status
+```
+Y deberia aparecer el siguiente mensaje:
+![image](https://res.cloudinary.com/dr3egho5s/image/upload/v1664071612/Generation%2018%20-%20Blog/Git/git-no-initialized_trshko.jpg)
+- 1 - Una vec confirmado el mensaje anterior iniciamos nuestro proyecto de git con:
+```bash
+git init
+```
+- 2 - Confirmamos que todo salio bien ejecutando de nuevo el comando:
+```bash
+git status
+```
+Y deberia aparecer el siguiente mensaje:
+![image](https://res.cloudinary.com/dr3egho5s/image/upload/v1664071612/Generation%2018%20-%20Blog/Git/git-status_byvkpf.jpg)
+- Opcional: En caso de que nuestra rama principal tenga el nombre de master, podemos cambiarlo a main usando el siguiente comando:
+```bash
+git branch -m main
+```
+
+Una vez realizado esto ya tenemos nuestro repositorio de git inicializado y listo.
+
+---------------
+[Mas informacion](https://www.atlassian.com/es/git/tutorials/setting-up-a-repository/git-init)
