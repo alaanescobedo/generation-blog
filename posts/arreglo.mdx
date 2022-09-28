@@ -1,0 +1,20 @@
+
+
+La razon del por que se recomieda declarar un arreglo u objeto con const es para evitar que se cambie el *tipo* de dato.
+Ejemplo:
+``` javascript
+let arrayLet = [1,2,3,4];
+const myArray = [10,11,12];
+
+console.log(arrayLet); // [1, 2, 3, 4]
+console.log(myArray); // [10, 11, 12]
+
+arrayLet = "Holi Crayoli";
+myArray = "Holi Crayoli 2";
+console.log(arrayLet); // "Holi Crayoli"
+console.log(myArray); // 💣TypeError💣: Assignment to constant variable.☠
+```
+
+
+
+

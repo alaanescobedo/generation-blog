@@ -1,0 +1,52 @@
+---
+title: Manipulacion del DOM (API DOM)
+tags:
+  - Javascript
+  - DOM
+date: 2022-09-28 21:00:00
+excerpt: Tarea de crear una calculadora
+---
+
+### Ejercicio:
+#### Preparativos:
+- [Inicializacion de un repositorio con git](/posts/inicializacion-de-un-repositorio-con-git)
+
+El DOM (**Document Object Model**) es una API definida para representar e interactuar con cualquier documento HTML, se carga en el navegador web y representa el documento con la **forma de un arbol invertido**, a cada estructura del arbol se le conoce como **nodo**.
+<p align="center">
+  <img src="https://res.cloudinary.com/dr3egho5s/image/upload/v1664384697/Generation%2018%20-%20Blog/DOM/dom-tree_1_adirp9.jpg" alt="Sublime's custom image"/>
+</p>
+Es una de las APIs más usadas en la Web, permite interactuar con cualquier nodo del documento. Estos nodos pueden crearse, moverse o modificarse, y a su vez agregarle eventos para que se ejecuten cuando el usuario interactue con ellos por medio de los llamados ***event listeners***.
+
+##### Acceder a los elementos HTML desde Javascript
+```javascript
+// Acceder a un elemento por su id
+document.getElementById('id'); // <button id="id">
+// Acceder a un elemento por su clase
+document.getElementsByClassName('class'); // <button class="class">
+// Acceder a un elemento por su etiqueta
+document.getElementsByTagName('tag'); // tag = <h1>, <p>, <button>, etc.
+
+// Acceder a un elemento por su selector
+document.querySelector('.class') // Equivalente a document.getElementsByClassName('class');
+document.querySelector('#id') // Equivalente a document.getElementById('id');
+document.querySelector('selector') // Equivalente a document.getElementsByTagName('selector');
+
+// Acceder a todos los elementos que coincidan con el selector
+document.querySelectorAll('clase/id/selector');
+```
+**NOTA**: A exepcion de `querySelectorAll` todos los metodos anteriores retornan solamente el primer elemento que encuentre en el HTML.
+
+Ejemplo:
+```html
+...
+<body>
+  <button class="btn">Segundo Boton</button>
+  <button class="btn">Primer Boton</button>
+  <button class="btn">Tercer Boton</button>
+</body>
+...
+```
+```javascript
+const boton = document.getElementsByClassName('btn');
+console.log(boton); // Imprimira el html que tiene el texto de "Segundo Boton"
+```
