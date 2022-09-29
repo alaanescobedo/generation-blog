@@ -7,7 +7,14 @@ tags:
 date: 2022-09-28 21:00:00
 excerpt: Tarea de crear una calculadora
 ---
-![Calculadora](https://res.cloudinary.com/dr3egho5s/image/upload/v1664441577/Generation%2018%20-%20Blog/Tareas/003_fn4t9s.png)
+
+<div>
+  <img
+  style={{width: '100%'}} 
+  src="https://res.cloudinary.com/dr3egho5s/image/upload/v1664441577/Generation%2018%20-%20Blog/Tareas/003_fn4t9s.png" 
+  alt="Sublime's custom image"
+  />
+</div>
 
 ### Ejercicio:
 #### Preparativos:
@@ -36,13 +43,14 @@ La **segunda fila** tendra 1 elemento:
 
 La **tercera fila** tendra 1 elemento:
 - Un **input/texto** que mostrara el resultado de la funcion.
-- - **Nota:** En caso de input debe establecerse de solo lectura.
+- - **Nota:** En caso de input debe establecerse de solo lectura y estar desactivado.
 -----------
 Ahora si con nuestras ideas establecidas empezemos con nuestra aplicacion.
+
 Primero que nada colocaremos un contenedor para establecer el ancho de nuestra aplicacion.
 ```html
 <body>
-  // Container
+  <!-- Container -->
   <div class="container border border-2 rounded-2 w-75 p-4 mt-5">
     ...
   </div>
@@ -52,18 +60,18 @@ Primero crearemos un contenedor, este sera nuestro elemento principal donde se m
 
 **Layout**
 - **container**: Es el elemento mas basico de bootstrap, se utiliza para rellenar, contener o (a veces) centrar el contenido.
-- - [Documentacion](https://getbootstrap.com/docs/5.2/layout/containers/#how-they-work)
+- - [Documentacion - Boostrap/Layout/containers](https://getbootstrap.com/docs/5.2/layout/containers/#how-they-work)
 
 **Utilidades**
 - **border**: Usalo cuando quieras agregar o quitar un borde a un elemento.
 - **border-2**: Modifica el grosor del borde.
 - **rounded-2**: Agrega un borde redondeado a un elemento.
-- - [Documentacion](https://getbootstrap.com/docs/5.2/utilities/borders/#border)
+- - [Documentacion - Boostrap/Utilities/border](https://getbootstrap.com/docs/5.2/utilities/borders/#border)
 - **w-75**: Nos permite definir el ancho de un elemento, en este caso usamos el 75% del ancho de la pantalla.
-- - [Documentacion](https://getbootstrap.com/docs/5.2/utilities/sizing/#relative-to-the-parent)
+- - [Documentacion - Boostrap/Utilities/sizing](https://getbootstrap.com/docs/5.2/utilities/sizing/#relative-to-the-parent)
 - **p-4**: Agrega un padding a un elemento, en otras palabras, agrega un espacio interno respecto al borde.
 - **mt-5**: Agrega un margen superior a un elemento, en otras palabras, agrega un espacio externo respecto al borde.
-- - [Documentacion](https://getbootstrap.com/docs/5.2/utilities/spacing/#gap)
+- - [Documentacion - Boostrap/Utilities/spacing](https://getbootstrap.com/docs/5.2/utilities/spacing/#gap)
 
 Este seria actualmente nuestro resultado, un simple cuadrado donde colocaremos nuestra aplicacion
 <div>
@@ -73,20 +81,453 @@ Este seria actualmente nuestro resultado, un simple cuadrado donde colocaremos n
   alt="Sublime's custom image"
   />
 </div>
-Agregemosle un simple titulo para que tenga algo de contenido
+
+A continuacion definamos que es lo que queremos tener:
+- 1 - En este caso queremos una **fila** que sirva para estructurar la posicion de nuestro **titulo** de la aplicacion.
+- 2 - Ademas una segunda **fila** que se va a encargue de contener los **inputs** para ingresar los datos, dicho de otra manera podria ser nuestro formulario. 
+
 ```html
 <body>
-  // Container
+  <!-- Container -->
   <div class="container border border-2 rounded-2 w-75 p-4 mt-5">
-    <h1 >Calculadora de Dias Laborales</h1>
-    ...
+    <!-- Titulo  -->
+    <div class="row" >...</div>
+    <!-- Formulario -->
+    <div class="row" >...</div>
   </div>
 </body>
 ```
+
+**Layout**
+- **row**: Actua como un contenedor de columnas, es decir, nos permite dividir el ancho de la pantalla en columnas.
+- - [Documentacion - Boostrap/Layout/grid](https://getbootstrap.com/docs/5.2/layout/grid/)
+
+**NOTA:** Si bien en la documentacion se encuentra en la seccion de grid, aqui mismo se menciona lo siguiente **'Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system'** (Usa nuestro poderoso sistema de cuadricula flexbox basado en dispositivos moviles para crear diseños de todas las formas y tamaños gracias a un sistema de doce columnas). Es decir no confundir con el Grid de CSS, Boostrap implementa en este caso flexbox.
+
+En nuestra primera file agreguemos un pequeño titulo para nuestra aplicacion:
+```html
+<body>
+  <!-- Container -->
+  <div class="container border border-2 rounded-2 w-75 p-4 mt-5">
+    <!-- Titulo  -->
+    <div class="row" >
+      <h1>Calculadora de dias laborales</h1>
+    </div>
+    <!-- Formulario -->
+    <div class="row" >...</div>
+  </div>
+</body>
+```
+Ahora en nuestra segunda fila estructuremos el formulario de nuestra aplicacion, ademas de rellenar los espacios con un icono 🍻 para poder vizualizar como esta quedando.
+```html
+<body>
+  <!-- Container -->
+  <div class="container border border-2 rounded-2 w-75 p-4 mt-5">
+    <!-- Titulo  -->
+    <div class="row" >...</div>
+    <!-- Formulario -->
+    <div class="row mx-auto" >
+      <!-- Inputs -->
+      <div class="row">🍻</div>
+      <!-- Calcular -->
+      <div class="row">🍻</div>
+      <!-- Resultado -->
+      <div class="row">🍻</div>
+    </div>
+  </div>
+</body>	
+```
+**Utilidades**
+- **mx-auto**: La clase row nos agrega cierto padding y margin por defecto que rompe el diseño del contenedor, por lo que esta utilidad nos ayuda a centrar su el contenido en el eje X (horizontal), corresponde a un 'margin: 0 auto;' en CSS
+
+En teoria esto funciona, y funcionaria bien, sin embargo una seccion en la documentacion de boostrap 3.0 recomienda lo siguiente: **Content should be placed within columns, and only columns may be immediate children of rows.** (***El contenido debe colocarse dentro de las columnas, y solo las columnas pueden ser hijos inmediatos de las filas***). Actualmente estamos en la version 5.2, por lo que esto pudo cambiar, sin embargo no encontre ejemplos explicitos en la documentacion donde se utilice una fila dentro de otra fila, por lo que englobare nuestras ultimas filas dentro de una columna.
+
+```html
+<body>
+  <!-- Container -->
+  <div class="container border border-2 rounded-2 w-75 p-4 mt-5">
+    <!-- Titulo  -->
+    <div class="row" >...</div>
+    <!-- Formulario -->
+    <div class="row mx-auto" >
+      <div class="col">
+        <!-- Inputs -->
+        <div class="row">🍻</div>
+        <!-- Calcular -->
+        <div class="row">🍻</div>
+        <!-- Resultado -->
+        <div class="row">🍻</div>
+      </div>
+    </div>
+  </div>
+</body>	
+```
+**Layout**
+- **col**: Establece una columna, es decir, nos permite dividir el ancho de la pantalla, en este caso esta ocupando todo el ancho.
+- - [Documentacion - Boostrap/Layout/columns](https://getbootstrap.com/docs/5.2/layout/columns/)
+
+Ahora si estamos listos para agrgar los elementos principales de nuestra aplicacion
+### Inputs 
+#### Primera Fila
+```html
+<body>
+  ...
+    <!-- Formulario -->
+    <div class="row mx-auto">
+      <div class="col">
+        <!-- Inputs -->
+          <div class="row gap-2">
+            <input class="col-md form-control" type="number" placeholder="28" />
+            <input class="col-md form-control" type="number" placeholder="9" />
+            <input class="col-md form-control" type="number" placeholder="2022" />
+          </div>
+        ...
+      </div>
+    </div>
+  </div>
+</body>	
+```
+**Layout**
+- **col-md**: Establece una columna unicamente cuando la pantalla sobrepase los ≥768px.
+- - [Documentacion - Boostrap/Layout/breakpoints](https://getbootstrap.com/docs/5.2/layout/breakpoints/)
+**Form**
+- **form-control**: Nos agrega un estilo basico a los inputs, ademas de agregarle un padding y un borde.
+- - [Documentacion - Boostrap/Form/form-control](https://getbootstrap.com/docs/5.2/forms/form-control/)
+**Utilidades**
+- **gap-2**: Nos permite agregar un espacio entre los elementos de una fila, en este caso entre los inputs.
+- - [Documentacion - Boostrap/Layout/gap](https://getbootstrap.com/docs/5.2/utilities/spacing/#gap)
+
+Si miramos nuestro programa, a esto momento deberiamos tener lo siguiente:
+- Mobile
 <div>
   <img
-  style={{width: '100%'}} 
-  src="https://res.cloudinary.com/dr3egho5s/image/upload/v1664441359/Generation%2018%20-%20Blog/Tareas/001_g2xsao.jpg" 
+  style={{width: '40%'}} 
+  src="https://res.cloudinary.com/dr3egho5s/image/upload/v1664471319/Generation%2018%20-%20Blog/Tareas/005_pkegp9.jpg" 
   alt="Sublime's custom image"
   />
 </div>
+- Desktop
+<div>
+  <img
+  style={{width: '100%'}} 
+  src="https://res.cloudinary.com/dr3egho5s/image/upload/v1664471319/Generation%2018%20-%20Blog/Tareas/006_pyphmm.jpg" 
+  alt="Sublime's custom image"
+  />
+</div>
+
+
+#### Segunda Fila
+Ahora vayamos a nuestra segunda fila, donde establecimos que colocariamos nuestro boton de calcular
+```html
+<body>
+  ...
+    <!-- Formulario -->
+    <div class="row mx-auto">
+      <div class="col">
+        <!-- Inputs -->
+        <div class="row gap-2">...</div>
+        <!-- Calcular -->
+        <div class="row">
+          <button class="btn btn-outline-success">Calcular</button>
+        </div>
+        ...
+      </div>
+    </div>
+  ...
+</body>
+```
+**Components**
+- **btn**: Establece estilos basicos a un boton.
+- **btn-outline-success**: Establece para el color del boton.
+- - [Documentacion - Boostrap/Components/buttons](https://getbootstrap.com/docs/5.2/components/buttons/)
+
+#### Tercera Fila
+Ahora vayamos a nuestra tercera y ultima fila, donde establecimos que colocariamos nuestro resultado
+```html
+<body>
+  ...
+     <!-- Formulario -->
+    <div class="row mx-auto">
+      <div class="col">
+        ...
+        <!-- Resultado -->
+        <div class="row">
+          <!-- Selecciona una -->
+          <!-- 1- Opcion con parrafo -->
+          <p class="fs-3 fw-bold">
+            Resultado: 
+            <span class="fw-normal">Aqui iria el resultado</span>
+          </p>
+          <!-- 2- Opcion con input -->
+            <input class="form-control" readonly disabled />
+        </div>
+      </div>
+    </div>
+  ...
+</body>
+```
+
+**Utilidades**
+- **fs-3**: Establece en estilo el tamaño de la fuente.
+- **fw-bold**: Establece en estilo el peso de la fuente.
+- **fw-normal**: Establece en estilo el peso de la fuente.
+- - [Documentacion - Boostrap/Utilities/text](https://getbootstrap.com/docs/5.2/utilities/text/)
+
+Por ultimo solamente volvamos a utilizar la utilidad de margin colocando 'my-3' en las 3 filas para darles algo de espacio.
+
+Y con esto acabamos el HTML y estilos de nuestra app.
+
+Si miramos de nuevo nuestro programa, deberiamos tener lo siguiente:
+- Mobile
+<div>
+  <img
+  style={{width: '40%'}} 
+  src="https://res.cloudinary.com/dr3egho5s/image/upload/v1664475683/Generation%2018%20-%20Blog/Tareas/007_lssxpr.jpg" 
+  alt="Sublime's custom image"
+  />
+</div>
+- Desktop
+<div>
+  <img
+  style={{width: '100%'}} 
+  src="https://res.cloudinary.com/dr3egho5s/image/upload/v1664475684/Generation%2018%20-%20Blog/Tareas/008_jm6yv4.jpg" 
+  alt="Sublime's custom image"
+  />
+</div>
+
+## Javascript
+### Enlazar Javascript con HTML
+Ahora regresamos al momento en donde visualizamos nuestra aplicacion, al inicio comentamo que al momento de dar click al boton calcular este deberia realizar una operacion para mostrarnos el resultado, asi que empezemos creando un archivo script.js en donde colocar nuestro codigo.
+
+Una vez creado es momento de enlazarlo con nuestro archivo HTML
+```html
+<body>
+  ...
+  <script src="script.js"></script>
+</body>
+```
+
+Realizado esten en nuestro archivo script.js necesitamos crear la funcion que se encargara de calcular el resultado, para esto crearemos una funcion llamada 'calcularFecha'.
+```javascript
+function calcularFecha() {
+  console.log("ʕ•ᴥ•ʔっ")
+}
+```
+
+La forma mas sencilla de crear una conexion entre nuestro boton del HTML y nuestro Javascript es utilizando el atributo 'onclick' en nuestro boton, para esto agregamos el siguiente codigo a nuestro boton.
+```html
+<body>
+  ...
+    <button class="btn btn-outline-success" onclick="calcularFecha()">
+    Calcular
+    </button>
+  ...
+</body>
+```
+Ahora si damos click en nuestro boton deberiamos ver en la consola de nuestro navegador el mensaje.
+
+#### Instrucciones
+Ya teniendo esto ahora vamos a establecer lo que necesitamos para construir nuestro codigo.
+- 1 - Obtener los valores de los inputs cuando el usuario los ingrese.
+- 2 - A partir de los valores obtenidos generar una fecha.
+- 3 - De la fecha generada obtener los valores que necesitamos.
+- 4 - Comprobar a que dia de la semana corresponde la fecha.
+- 5 - Comprobar si el dia corresponde a un dia laborarl o no.
+- 6 - Mostrar el resultado en el HTML
+
+Empezmos con el primer paso
+#### 1 - Obtener los valores de los inputs cuando el usuario los ingrese.
+Para esto vamos a utilizar algun metodo que nos ofrezca la intefaz de  **'document'**,
+en este ejemplo utilizaremos un id para identificar cada input.
+
+Asi que un nuestro HTML agregamos
+```html
+<body>
+  ...
+    <!-- Inputs -->
+    <div class="row gap-2">
+      <input id="day" class="form-control" type="number" placeholder="Dia" />
+      <input id="month" class="form-control" type="number" placeholder="Mes" />
+      <input id="year" class="form-control" type="number" placeholder="Año" />
+    </div>
+    ...
+  </div>
+  ...
+```
+Y en nuestro Javascript escribimos lo siguiente
+```javascript
+function calcularFecha() {
+  // Obtener los valores de los inputs
+  const dayInput = document.getElementById("day").value;
+  const monthInput = document.getElementById("mont").value;
+  const yearInput = document.getElementById("year").value;
+
+  console.log({ dayInput, monthInput, yearInput });
+  console.log("ʕ•ᴥ•ʔっ")
+}
+```
+
+#### 2 - A partir de los valores obtenidos generar una fecha.
+Para esto utilizaremos la clase **'Date'** de Javascript, esta clase nos permite crear una fecha a partir de los valores que le pasemos, utilizaremos el formato 'year, month, day', hay mas formas de crear una fecha pero para este ejemplo usaremos este formato.
+
+[Documentacion - Date](https://www.w3schools.com/jsref/jsref_obj_date.asp)
+```javascript
+function calcularFecha() {
+  // Obtener los valores de los inputs
+  ....
+
+  // Generar una fecha
+  const date = new Date(yearInput, monthInput - 1, dayInput);
+  console.log(date);
+  // Nos deberia impromir algo como esto
+  // Thu Sep 29 2022 14:14:57 GMT-0500 (Central Daylight Time)
+}
+```
+**NOTA:** Dado que estamos utilizando valor que depende del usuario, lo mas comun es que estos valores tengan un rango de 1 para Enero a 12 para Diciembre, sin embargo el valor que corresponde a mes en new Date() es de 0 a 11, siendo 0 Enero y 11 Diciembre, por lo que para evitar errores debemos restarle 1 al valor que ingresa el usuario.
+
+### 3 - De la fecha generada obtener los valores que necesitamos.
+A partir de aqui ya podemos trabajar con nuestra fecha, esta variable nos ofrece multitud de metodos, en este ejemplo utilizaremos 'getDay()' para obtener el dia de la semana.
+
+[Documentacion - getDay()](https://www.w3schools.com/jsref/jsref_getday.asp)
+
+```javascript
+function calcularFecha() {
+  // Obtener los valores de los inputs
+  ....
+
+  // Generar una fecha
+  const date = new Date(yearInput, monthInput - 1, dayInput);
+  const dayIndex = date.getDay();
+
+  console.log({ dayIndex }); // 0: Domingo, 1: Lunes, ... , 6: Sabado
+}
+```
+
+Ya con este valor podemos comprobar si el dia es laboral o no, y ademas saber exactamente que dia fue.
+
+
+### 4 - Comprobar a que dia de la semana corresponde la fecha.
+Para esto vamos a utilizar un array que contenga los dias de la semana, y con el valor que obtuvimos en el paso anterior vamos a obtener el dia de la semana. Ademas de una variable para almacenar el valor, en este caso es 'dayLabel'.
+
+**NOTA:** De preferencia iniciar el arreglo de los dias de la semana por el Domingo, ya que el valor que nos devuelve 'getDay()' es de 0 a 6, siendo 0 Domingo y 6 Sabado. Existen otras formas de obtener el dia de la semana directamente con la fecha, pero para este ejemplo utilizaremos este metodo de usar el arreglo.
+
+```javascript
+const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+  function calcularFecha() {
+  // Obtener los valores de los inputs
+  ....
+
+  // Generar una fecha
+  const date = new Date(yearInput, monthInput - 1, dayInput);
+  const dayIndex = date.getDay();
+
+  const dayLabel = diasSemana[dayIndex]; // diasSemana[0] = 'Domingo'
+  console.log(dayLabel); // Domingo || Lunes || Martes ...etc.
+}
+```
+
+Dado que ***.getDay()*** nos devuelve el valor del dia de la semana en valor numerico, podemos utilizarlo para acceder a nuestro arreglo donde tenemos los dias en texto.
+
+[Documentacion - MDN - Array](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Indexed_collections#refiri%C3%A9ndose_a_elementos_del_arreglo)
+
+### 5 - Comprobar a que dia de la semana corresponde la fecha.
+Ahora, en el ejercicio nos solicitan hacer uso de una declaracion switch, este lo podemos utilizar para comprobar si el dia de la semana es laboral o no.
+
+Para esto necesitaremos una nueva variable ('message'), y una sentencia switch que reciba como parametro el valor de 'dayIndex'. En caso de que el indice del dia corresponde a un 0, o a un 6 (Domingo o Sabado) entonces la variable 'message' tendra el valor de 'No es dia laboral', en de que no sea ninguno de estos dos valores, entonces la variable 'message' tendra el valor de 'Es dia laboral'.
+
+```javascript
+function calcularFecha() {
+  // Obtener los valores de los inputs
+  ....
+  // Generar una fecha
+  const date = new Date(yearInput, monthInput - 1, dayInput);
+  const dayIndex = date.getDay();
+
+  const dayLabel = diasSemana[dayIndex]; // diasSemana[0] = 'Domingo'
+  let message = "";
+
+  switch (dayIndex) {
+    case 0: case 6: // 0: Domingo, 6: Sabado
+      message = "No es dia laboral";
+      break;
+    default: // 1: Lunes, 2: Martes, 3: Miercoles, 4: Jueves, 5: Viernes
+      message = "Es dia laboral";
+      break;
+  }
+}
+```
+
+Una vez teniendo este valor estamos listos para mostrar nuestro resultado en la pagina.
+### 6 - Mostrar el resultado en el HTML
+Independiente de si utilizamos un elemento de p o span, o un input, necesitamos acceder a este elemento desde Javascript, para eso volvemos al primer paso, y utilizamos el metodo ***.getElementById()*** para obtener el elemento que necesitamos. Ademas de agregar su respectivo id en el HTML.
+
+```html
+<body>
+  ...
+   <!-- Resultado -->
+    <div class="row">
+      <!-- 1- Opcion con parrafo -->
+      <p class="fs-3 fw-bold">
+        Resultado: 
+        <span id="result" class="fw-normal"></span>
+      </p>
+      <!-- 2- Opcion con input -->
+        <input id="result" class="form-control" readonly disabled />
+    </div>
+  ...
+</body>
+```
+
+```javascript
+function calcularFecha() {
+  // Obtener los valores de los inputs
+  ....
+  // Generar una fecha
+  ...
+  // Mostrar el resultado en el HTML
+  const resultElement = document.getElementById('result'); // sin value
+  console.log(resultElement); // etiqueta <span> || <input>
+}
+```
+
+Ahora si, dependiendo si elegimos utilizar un input o un <p> | <span>, podemos utilizar diferentes metodos para modificar su contenido. 
+
+- Caso de parrafo | span
+Con estos elementos tienes la posibilidad de editar su contenido utilizando los siguientes metodos, ***.innerHTML***, ***.innerText***, ***.textContent***. Estos metodos son similares, pero tienen algunas diferencias. En este caso realmente no hay mucha diferencia, en este ejemplo usaremos ***.innerText***, ya que no requerimos editar mucho mas que el texto.
+
+[Dev.to](https://dev.to/developertharun/javascript-dom-part-4-innerhtml-vs-innertext-vs-textcontent-video-article-1b90)
+
+```javascript
+function calcularFecha() {
+  // Obtener los valores de los inputs
+  ....
+  // Generar una fecha
+  ...
+  const dayLabel = diasSemana[dayIndex]; // diasSemana[0] = 'Domingo'
+  let message = "";
+  ...
+  // Mostrar el resultado en el HTML
+  const resultElement = document.getElementById('result'); // sin value
+  resultElement.innerText = `${dayLabel}, ${message}`;
+}
+```
+
+- Caso Input
+Con este elemento no disponemos de los metodos anteriores, por lo que tendremos que utilizar el metodo ***.value*** para modificar su contenido. El metodo ***.value*** nos permite modificar el valor de un input.
+
+```javascript
+function calcularFecha() {
+  // Obtener los valores de los inputs
+  ....
+  // Generar una fecha
+  ...
+  const dayLabel = diasSemana[dayIndex]; // diasSemana[0] = 'Domingo'
+  let message = "";
+  ...
+  // Mostrar el resultado en el HTML
+  const resultElement = document.getElementById('result'); // sin value
+  resultElement.value = `${dayLabel}, ${message}`;
+}
+```
+
+Y con esto ya deberia estar funcionando nuestro codigo, y deberiamos poder ver el resultado en la pagina.
