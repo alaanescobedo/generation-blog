@@ -1,0 +1,92 @@
+---
+title: Calculadora de Dias Laborales [Tarea]
+tags:
+  - Javascript
+  - DOM
+  - Tarea
+date: 2022-09-28 21:00:00
+excerpt: Tarea de crear una calculadora
+---
+![Calculadora](https://res.cloudinary.com/dr3egho5s/image/upload/v1664441577/Generation%2018%20-%20Blog/Tareas/003_fn4t9s.png)
+
+### Ejercicio:
+#### Preparativos:
+- [Inicializacion de un repositorio con git](/posts/inicializacion-de-un-repositorio-con-git)
+- [Manipulacion del DOM](/posts/manipulacion-del-dom)
+- Instalacion de bootstrap en el proyecto
+
+## HTML & Bootstrap
+Empezemos estructurando el diseño que tendra nuestra aplicacion:
+<div>
+  <img
+  style={{width: '300px'}} 
+  src="https://res.cloudinary.com/dr3egho5s/image/upload/v1664441661/Generation%2018%20-%20Blog/Tareas/004_yjd3sf.jpg" 
+  alt="Sublime's custom image"
+  />
+</div>
+Podemos definir a vista que nuestra aplicacion tendra 3 filas
+
+La **primera fila** tendra 3 elementos:
+- Un **input** para ingresar el dia.
+- Un **input** para ingresar el mes.
+- Un **input** para ingresar el año.
+
+La **segunda fila** tendra 1 elemento:
+- Un **boton** que ejecutara la accion de calcular los dias laborales.
+
+La **tercera fila** tendra 1 elemento:
+- Un **input/texto** que mostrara el resultado de la funcion.
+- - **Nota:** En caso de input debe establecerse de solo lectura.
+-----------
+Ahora si con nuestras ideas establecidas empezemos con nuestra aplicacion.
+Primero que nada colocaremos un contenedor para establecer el ancho de nuestra aplicacion.
+```html
+<body>
+  // Container
+  <div class="container border border-2 rounded-2 w-75 p-4 mt-5">
+    ...
+  </div>
+</body>
+```
+Primero crearemos un contenedor, este sera nuestro elemento principal donde se mostrara la aplicacion
+
+**Layout**
+- **container**: Es el elemento mas basico de bootstrap, se utiliza para rellenar, contener o (a veces) centrar el contenido.
+- - [Documentacion](https://getbootstrap.com/docs/5.2/layout/containers/#how-they-work)
+
+**Utilidades**
+- **border**: Usalo cuando quieras agregar o quitar un borde a un elemento.
+- **border-2**: Modifica el grosor del borde.
+- **rounded-2**: Agrega un borde redondeado a un elemento.
+- - [Documentacion](https://getbootstrap.com/docs/5.2/utilities/borders/#border)
+- **w-75**: Nos permite definir el ancho de un elemento, en este caso usamos el 75% del ancho de la pantalla.
+- - [Documentacion](https://getbootstrap.com/docs/5.2/utilities/sizing/#relative-to-the-parent)
+- **p-4**: Agrega un padding a un elemento, en otras palabras, agrega un espacio interno respecto al borde.
+- **mt-5**: Agrega un margen superior a un elemento, en otras palabras, agrega un espacio externo respecto al borde.
+- - [Documentacion](https://getbootstrap.com/docs/5.2/utilities/spacing/#gap)
+
+Este seria actualmente nuestro resultado, un simple cuadrado donde colocaremos nuestra aplicacion
+<div>
+  <img
+  style={{width: '100%'}} 
+  src="https://res.cloudinary.com/dr3egho5s/image/upload/v1664440992/Generation%2018%20-%20Blog/Tareas/000_blaxqo.jpg" 
+  alt="Sublime's custom image"
+  />
+</div>
+Agregemosle un simple titulo para que tenga algo de contenido
+```html
+<body>
+  // Container
+  <div class="container border border-2 rounded-2 w-75 p-4 mt-5">
+    <h1 >Calculadora de Dias Laborales</h1>
+    ...
+  </div>
+</body>
+```
+<div>
+  <img
+  style={{width: '100%'}} 
+  src="https://res.cloudinary.com/dr3egho5s/image/upload/v1664441359/Generation%2018%20-%20Blog/Tareas/001_g2xsao.jpg" 
+  alt="Sublime's custom image"
+  />
+</div>
