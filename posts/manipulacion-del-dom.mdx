@@ -38,19 +38,3 @@ document.querySelector('selector') // Equivalente a document.getElementsByTagNam
 // Acceder a todos los elementos que coincidan con el selector
 document.querySelectorAll('clase/id/selector');
 ```
-**NOTA**: A exepcion de `querySelectorAll` todos los metodos anteriores retornan solamente el primer elemento que encuentre en el HTML.
-
-Ejemplo:
-```html
-...
-<body>
-  <button class="btn">Segundo Boton</button>
-  <button class="btn">Primer Boton</button>
-  <button class="btn">Tercer Boton</button>
-</body>
-...
-```
-```javascript
-const boton = document.getElementsByClassName('btn');
-console.log(boton); // Imprimira el html que tiene el texto de "Segundo Boton"
-```
